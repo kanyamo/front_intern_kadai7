@@ -1,0 +1,117 @@
+main {
+    display: flex;
+    font-size: 24px;
+}
+
+section.create, section.list {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px
+}
+
+section.create > p, section.list > p {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.section-container {
+    background-color: #fff;
+    border-radius: 4%;
+    height: 100%;
+    padding: 24px 32px;
+}
+
+.form-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+.button {
+    width: 96px;
+    height: 64px;
+    border: none;
+    border-radius: 4px;
+    background-color: #55cbfa;
+    color: #f5f5f5;
+    align-self: center;
+}
+
+.form-control {
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+.textarea {
+    height: 90%;
+}
+
+.date-form {
+    padding: 4px 32px 4px 8px;
+    width: 8vw;
+}
+
+.time-form {
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+select {
+    background-color: #fff;
+    color: #22304d;
+    background-image: url(../img/select.svg);
+    background-position: right 4px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+select + select {
+    margin: 4px
+}
+
+table {
+    width: 100%;
+}
+
+th {
+  background-color: #22304d;
+  color: #f5f5f5;
+  padding: 8px 16px;
+  border-right: 1px solid #f5f5f5;
+}
+
+td {
+    border: 1px solid #9aa2b2;
+    padding: 8px 16px;
+}
+
+td.title {
+    width: 50%;
+}
+
+.pagination {
+    margin-top: 24px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item {
+    height: 56px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border: 1px solid #9aa2b2;
+}
+
+.now {
+    background-color: #55cbfa;
+    color: #f5f5f5;
+    border: none;
+}

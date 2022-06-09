@@ -1,0 +1,66 @@
+{% extends "todo/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+  <link rel="stylesheet" href="{% static 'todo/css/index.css' %}">
+{% endblock %}
+
+
+{% block contents %}
+    <section class="create">
+      <p>Add Todo</p>
+      <div class="section-container">
+        <form action="/" method="post" class="form-container">
+            {% csrf_token %}
+            <div>
+              <p>{{ form.title.label_tag }}</p>
+              {{ form.title }}
+            </div>
+            <div>
+              <p>{{ form.contents.label_tag }}</p>
+              {{ form.contents }}
+            </div>
+            <div>
+              <p>期日:</p>
+              {{ form.deadline_date }} {{ form.deadline_time }}
+            </div>
+            <input type="submit" class="button" value="作成">
+        </form>
+      </div>
+    </section>
+
+    <section class="list">
+      <p>Todo List</p>
+      <div class="section-container">
+        <table>
+          <tr>
+            <th>Todo</th>
+            <th>期日</th>
+            <th>完了</th>
+          </tr>
+          {% for todo in object_list %}
+          <tr>
+            <td class="title">{{ todo.title }}</td>
+            <td>{{ todo.deadline_date | date:"n/j(D)"}} {{ todo.deadline_time | date:"H:i"}}</td>
+            <td><a href="{% url 'todo:delete' todo.id %}">完了</a></td>
+          {% endfor %}
+        </table>
+
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}" class="page-item">{{page_obj.previous_page_number}}</a>
+          {% endif %}
+
+          <div class="page-item now">{{page_obj.number}}</div>
+
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="page-item">{{page_obj.next_page_number}}</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'todo/js/index.js' %}"></script>
+{% endblock %}

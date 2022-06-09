@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'todo/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'todo/css/base.css' %}">
+    {% block extra_style %}{% endblock %}
+    <title>Todo</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li class="icon-container app-name">Todo</li>
+      <li id="calendar"><a class="icon-container" href="{% url 'todo:index' %}">
+        <img src="{% static 'todo/img/calendar.svg' %}" alt="calendar-icon" class="icon">
+        <p>Calendar</p>
+      </a></li>
+      <li id="todo"><a class="icon-container" href="{% url 'todo:index' %}">
+        <img src="{% static 'todo/img/todo.svg' %}" alt="todo-icon" class="icon">
+        <p>Todo</p>
+      </a></li>
+      <li id="chart"><a class="icon-container" href="{% url 'todo:index' %}">
+        <img src="{% static 'todo/img/chart.svg' %}" alt="chart-icon" class="icon">
+        <p>Chart</p>
+      </a></li>
+    </ul>
+    <div id="settings"><a class="icon-container" href="{% url 'todo:index' %}">
+      <img src="{% static 'todo/img/settings.svg' %}" alt="settings-icon" class="icon">
+    </a></div>
+  </nav>
+
+  <main>
+    {% block contents %}{% endblock %}
+  </main>
+
+  {% block script %}{% endblock %}
+</body>
+</html>
