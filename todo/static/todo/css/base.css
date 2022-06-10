@@ -1,11 +1,12 @@
 body {
     display: flex;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    overflow: hidden;
 }
 
 nav {
     font-family: 'Roboto Mono', monospace;
-    width: 112px;
+    width: 96px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,7 +17,7 @@ nav {
 li.app-name {
     background-color: #071025;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 24px;
     color: #55cbfa;
     height: 72px;
 }

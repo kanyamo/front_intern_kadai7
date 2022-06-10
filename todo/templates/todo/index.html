@@ -10,19 +10,22 @@
     <section class="create">
       <p>Add Todo</p>
       <div class="section-container">
-        <form action="/" method="post" class="form-container">
+        <form action="/" method="post" class="form-outer-container">
             {% csrf_token %}
-            <div>
-              <p>{{ form.title.label_tag }}</p>
-              {{ form.title }}
-            </div>
-            <div>
-              <p>{{ form.contents.label_tag }}</p>
-              {{ form.contents }}
-            </div>
-            <div>
-              <p>期日:</p>
-              {{ form.deadline_date }} {{ form.deadline_time }}
+            <div class="form-inner-container">
+              <div>
+                <p>{{ form.title.label_tag }}</p>
+                {{ form.title }}
+              </div>
+              <div>
+                <p>{{ form.contents.label_tag }}</p>
+                {{ form.contents }}
+              </div>
+              <div>
+                <p>期日:</p>
+                <div>{{ form.deadline_date }}</div>
+                <div>{{ form.deadline_time }}</div>
+              </div>
             </div>
             <input type="submit" class="button" value="作成">
         </form>
@@ -31,7 +34,7 @@
 
     <section class="list">
       <p>Todo List</p>
-      <div class="section-container">
+      <div class="section-container list-container">
         <table>
           <tr>
             <th>Todo</th>

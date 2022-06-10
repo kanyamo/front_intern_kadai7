@@ -1,6 +1,5 @@
 main {
     display: flex;
-    font-size: 24px;
 }
 
 section.create, section.list {
@@ -12,7 +11,7 @@ section.create, section.list {
 }
 
 section.create > p, section.list > p {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
 }
 
@@ -23,16 +22,22 @@ section.create > p, section.list > p {
     padding: 24px 32px;
 }
 
-.form-container {
+.form-inner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.form-outer-container {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 4vh;
+    justify-content: space-between;
 }
 
 .button {
-    width: 96px;
-    height: 64px;
+    width: 160px;
+    height: 56px;
     border: none;
     border-radius: 4px;
     background-color: #55cbfa;
@@ -73,6 +78,12 @@ select + select {
     margin: 4px
 }
 
+.list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 table {
     width: 100%;
 }
@@ -101,7 +112,7 @@ td.title {
 }
 
 .page-item {
-    height: 56px;
+    height: 48px;
     width: 40px;
     display: flex;
     justify-content: center;

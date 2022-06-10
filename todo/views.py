@@ -12,7 +12,10 @@ class IndexCreateView(CreateView):
 
 class IndexListView(ListView):
     model = Todo
-    paginate_by = 8
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Todo.objects.order_by("deadline_date", "deadline_time")
 
 
 class IndexView(IndexCreateView, IndexListView):
