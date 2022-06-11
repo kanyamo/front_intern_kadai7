@@ -6,11 +6,13 @@
 {% endblock %}
 
 
+{% block nav %}{% with todo=True %}{{ block.super }}{% endwith %}{% endblock %}
+
 {% block contents %}
     <section class="create">
       <p>Add Todo</p>
       <div class="section-container">
-        <form action="/" method="post" class="form-outer-container">
+        <form method="post" class="form-outer-container">
             {% csrf_token %}
             <div class="form-inner-container">
               <div>
@@ -62,8 +64,4 @@
         </div>
       </div>
     </section>
-{% endblock %}
-
-{% block script %}
-<script src="{% static 'todo/js/index.js' %}"></script>
 {% endblock %}

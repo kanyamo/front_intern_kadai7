@@ -14,6 +14,7 @@
     <title>Todo</title>
 </head>
 <body>
+  {% block nav %}
   <nav>
     <ul>
       <li class="icon-container app-name">Todo</li>
@@ -21,19 +22,20 @@
         <img src="{% static 'todo/img/calendar.svg' %}" alt="calendar-icon" class="icon">
         <p>Calendar</p>
       </a></li>
-      <li id="todo"><a class="icon-container" href="{% url 'todo:index' %}">
+      <li id="todo" {% if todo %}class="selected"{% endif %}><a class="icon-container" href="{% url 'todo:index' %}">
         <img src="{% static 'todo/img/todo.svg' %}" alt="todo-icon" class="icon">
         <p>Todo</p>
       </a></li>
-      <li id="chart"><a class="icon-container" href="{% url 'todo:index' %}">
+      <li id="chart" {% if chart %}class="selected"{% endif %}><a class="icon-container" href="{% url 'todo:index' %}">
         <img src="{% static 'todo/img/chart.svg' %}" alt="chart-icon" class="icon">
         <p>Chart</p>
       </a></li>
     </ul>
-    <div id="settings"><a class="icon-container" href="{% url 'todo:index' %}">
+    <div id="settings" {% if settings %}class="selected"{% endif %}><a class="icon-container" href="{% url 'todo:index' %}">
       <img src="{% static 'todo/img/settings.svg' %}" alt="settings-icon" class="icon">
     </a></div>
   </nav>
+  {% endblock %}
 
   <main>
     {% block contents %}{% endblock %}
