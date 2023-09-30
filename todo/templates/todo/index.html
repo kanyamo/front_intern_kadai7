@@ -1,0 +1,28 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static 'todo/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="section-title">
+    <h2>Add Todo</h2>
+  </div>
+  <div class="section-content">
+    <form method="post" action="{% url 'todo:index' %}">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+        {{form.title}}
+      <button type="submit">作成</button>
+    </form>
+  </div>
+</section>
+<section>
+  <div class="section-title">
+    <h2>Todo List</h2>
+  </div>
+  <div class="section-content"></div>
+</section>
+{% endblock %}

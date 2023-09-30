@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'todo/css/reset.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'todo/css/base.css' %}">
+  {% block extra_style %}{% endblock %}
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="menu">
+      <div class="menu-title">
+        <h2>Todo</h2>
+      </div>
+      <div class="menu-content">
+        <div class="menu-element">
+          <img src="{% static 'todo/img/calendar.svg' %}">
+          <p>Calendar</p>
+        </div>
+        <div class="menu-element selected">
+          <img src="{% static 'todo/img/todo.svg' %}">
+          <p>Todo</p>
+        </div>
+        <div class="menu-element">
+          <img src="{% static 'todo/img/chart.svg' %}">
+          <p>Chart</p>
+        </div>
+        <div class="menu-settings">
+          <img src="{% static 'todo/img/settings.svg' %}">
+        </div>
+      </div>      
+    </div>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</body>
+</html>
