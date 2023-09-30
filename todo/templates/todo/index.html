@@ -14,8 +14,30 @@
     <form method="post" action="{% url 'todo:index' %}">
       {% csrf_token %}
       {{ form.non_field_errors }}
+      <div class="form-title">
+        {{form.title.label_tag}}
         {{form.title}}
-      <button type="submit">作成</button>
+        {{form.title.errors}}
+      </div>
+      <div class="form-contents">
+        {{form.contents.label_tag}}
+        {{form.contents}}
+        {{form.contents.errors}}
+      </div>
+      <div>
+        <p>期日:</p>
+        <div class="deadline-date">
+          {{form.deadline_date}}
+          {{form.deadline_date.errors}}  
+        </div>
+        <div>
+          {{form.deadline_time}}
+          {{form.deadline_time.errors}}  
+        </div>
+      </div>
+      <div class="form-button">
+        <button type="submit" class="submit-button">作成</button>
+      </div>
     </form>
   </div>
 </section>
@@ -23,6 +45,9 @@
   <div class="section-title">
     <h2>Todo List</h2>
   </div>
-  <div class="section-content"></div>
+  <div class="section-content">
+    <div></div>
+    <div></div>
+  </div>
 </section>
 {% endblock %}
