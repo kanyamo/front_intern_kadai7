@@ -22,7 +22,7 @@
           <img src="{% static 'todo/img/calendar.svg' %}">
           <p>Calendar</p>
         </div>
-        <div class="menu-element selected">
+        <div class="menu-element" id="todo">
           <img src="{% static 'todo/img/todo.svg' %}">
           <p>Todo</p>
         </div>
@@ -39,5 +39,6 @@
       {% block content %}{% endblock %}
     </div>
   </div>
+  {% block script %}{% endblock %}
 </body>
 </html>

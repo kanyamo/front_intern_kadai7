@@ -11,28 +11,28 @@
     <h2>Add Todo</h2>
   </div>
   <div class="section-content">
-    <form method="post" action="{% url 'todo:index' %}">
+    <form action="{% url 'todo:index' %}" method="post">
       {% csrf_token %}
       {{ form.non_field_errors }}
       <div class="form-title">
-        {{form.title.label_tag}}
-        {{form.title}}
-        {{form.title.errors}}
+        {{ form.title.label_tag }}
+        {{ form.title }}
+        {{ form.title.errors }}
       </div>
       <div class="form-contents">
-        {{form.contents.label_tag}}
-        {{form.contents}}
-        {{form.contents.errors}}
+        {{ form.contents.label_tag }}
+        {{ form.contents }}
+        {{ form.contents.errors }}
       </div>
       <div>
         <p>期日:</p>
         <div class="deadline-date">
-          {{form.deadline_date}}
-          {{form.deadline_date.errors}}  
+          {{ form.deadline_date }}
+          {{ form.deadline_date.errors }}  
         </div>
         <div>
-          {{form.deadline_time}}
-          {{form.deadline_time.errors}}  
+          {{ form.deadline_time }}
+          {{ form.deadline_time.errors }}  
         </div>
       </div>
       <div class="form-button">
@@ -46,8 +46,46 @@
     <h2>Todo List</h2>
   </div>
   <div class="section-content">
-    <div></div>
-    <div></div>
+    <table>
+      <tr>
+        <th class="todo-cell">Todo</th>
+        <th class="deadline-cell">期日</th>
+        <th class="complete-cell">完了</th>
+        {% for todo in object_list %}
+          <tr>
+            <td>{{ todo.title }}</td>
+            <td>
+              {{ todo.deadline_date | date:"n/j(D) " }}
+              {{ todo.deadline_time | date:"H:i"}}
+            </td>
+            <td><a href="{% url 'todo:delete' todo.id %}">完了</a></td>
+          </tr>
+        {% endfor %}
+      </tr>
+    </table>
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+      <span class="pagination-button">
+        <a href="?page={{ page_obj.previous_page_number }}">
+          {{ page_obj.previous_page_number }}
+        </a>  
+      </span>
+    {% endif %}
+    <span class="pagination-button current">
+      {{ page_obj.number }}
+    </span>
+    {% if page_obj.has_next %}
+    <span class="pagination-button">
+      <a href="?page={{ page_obj.next_page_number }}">
+        {{ page_obj.next_page_number }}
+      </a>
+    </span>
+    {% endif %}
+    </div>
   </div>
 </section>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'todo/js/index.js' %}"></script>
 {% endblock %}
