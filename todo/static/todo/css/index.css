@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+* {
+  font-family: 'Rubik', 'Kosugi Maru', sans-serif;
+}
+
 a {
   padding: 12px 16px;
   display: block;
