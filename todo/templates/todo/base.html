@@ -18,15 +18,21 @@
         <h2>Todo</h2>
       </div>
       <div class="menu-content">
-        <div class="menu-element">
+        {% comment %}
+        <!-- urlタグでURLを取得し、変数に格納する -->
+        {% endcomment %}
+        {% url 'todo:index' as todo_url %}
+        {% url 'todo:calendar' as calendar_url %}  <!-- 未実装 -->
+        {% url 'todo:chart' as chart_url %}  <!-- 未実装 -->
+        <div class="menu-element {% if request.path == calendar_url %}selected{% endif %}">
           <img src="{% static 'todo/img/calendar.svg' %}">
           <p>Calendar</p>
         </div>
-        <div class="menu-element" id="todo">
+        <div class="menu-element {% if request.path == todo_url %}selected{% endif %}" id="todo">
           <img src="{% static 'todo/img/todo.svg' %}">
           <p>Todo</p>
         </div>
-        <div class="menu-element">
+        <div class="menu-element {% if request.path == chart_url %}selected{% endif %}">
           <img src="{% static 'todo/img/chart.svg' %}">
           <p>Chart</p>
         </div>

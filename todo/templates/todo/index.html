@@ -58,8 +58,10 @@
           <tr>
             <td>{{ todo.title }}</td>
             <td>
-              {{ todo.deadline_date | date:"n/j(D) " }}
-              {{ todo.deadline_time | date:"H:i"}}
+              <time datetime="{{ todo.deadline_date | date:'c' }}T{{ todo.deadline_time | date:'c'}}" class="deadline">
+                {{ todo.deadline_date | date:"n/j(D) " }}
+                {{ todo.deadline_time | date:"H:i"}}
+              </time>
             </td>
             <td><a href="{% url 'todo:delete' todo.id %}">完了</a></td>
           </tr>
@@ -73,17 +75,17 @@
           {{ page_obj.previous_page_number }}
         </a>  
       </span>
-    {% endif %}
-    <span class="pagination-button current">
-      {{ page_obj.number }}
-    </span>
-    {% if page_obj.has_next %}
-    <span class="pagination-button">
-      <a href="?page={{ page_obj.next_page_number }}">
-        {{ page_obj.next_page_number }}
-      </a>
-    </span>
-    {% endif %}
+      {% endif %}
+      <span class="pagination-button current">
+        {{ page_obj.number }}
+      </span>
+      {% if page_obj.has_next %}
+      <span class="pagination-button">
+        <a href="?page={{ page_obj.next_page_number }}">
+          {{ page_obj.next_page_number }}
+        </a>
+      </span>
+      {% endif %}
     </div>
   </div>
 </section>
